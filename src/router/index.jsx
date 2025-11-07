@@ -35,7 +35,7 @@ const mainRoutes = [
     ),
   },
   {
-    path: "search",
+path: "search-results",
     element: (
       <Suspense fallback={<LoadingFallback />}>
         <SearchResults />
