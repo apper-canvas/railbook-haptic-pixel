@@ -9,9 +9,9 @@ import SearchForm from "@/components/organisms/SearchForm";
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleRouteClick = (route) => {
-    // Parse route string like "Delhi to Mumbai" into origin and destination
-    const routeParts = route.route.split(' to ');
+const handleRouteClick = (route) => {
+    // Parse route string like "Delhi → Mumbai" into origin and destination
+    const routeParts = route.route.split(' → ');
     if (routeParts.length === 2) {
       const [origin, destination] = routeParts;
       // Navigate to search results with pre-populated route data
