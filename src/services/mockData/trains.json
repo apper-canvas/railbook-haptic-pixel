@@ -1,0 +1,214 @@
+[
+  {
+    "Id": 1,
+    "trainNumber": "12951",
+    "trainName": "Mumbai Rajdhani Express",
+    "origin": "NDLS",
+    "destination": "BCT",
+    "departureTime": "16:55",
+    "arrivalTime": "08:35",
+    "duration": "15h 40m",
+    "classes": ["1A", "2A", "3A"],
+    "availableSeats": {
+      "1A": 24,
+      "2A": 52,
+      "3A": 72
+    },
+    "fare": {
+      "1A": 4500,
+      "2A": 2800,
+      "3A": 1850
+    }
+  },
+  {
+    "Id": 2,
+    "trainNumber": "12302",
+    "trainName": "Kolkata Rajdhani Express",
+    "origin": "NDLS",
+    "destination": "HWH",
+    "departureTime": "17:00",
+    "arrivalTime": "10:05",
+    "duration": "17h 05m",
+    "classes": ["1A", "2A", "3A"],
+    "availableSeats": {
+      "1A": 18,
+      "2A": 45,
+      "3A": 64
+    },
+    "fare": {
+      "1A": 5200,
+      "2A": 3200,
+      "3A": 2150
+    }
+  },
+  {
+    "Id": 3,
+    "trainNumber": "12621",
+    "trainName": "Tamil Nadu Express",
+    "origin": "NDLS",
+    "destination": "MAS",
+    "departureTime": "22:30",
+    "arrivalTime": "05:50",
+    "duration": "31h 20m",
+    "classes": ["1A", "2A", "3A", "SL"],
+    "availableSeats": {
+      "1A": 12,
+      "2A": 38,
+      "3A": 58,
+      "SL": 72
+    },
+    "fare": {
+      "1A": 6800,
+      "2A": 4200,
+      "3A": 2850,
+      "SL": 985
+    }
+  },
+  {
+    "Id": 4,
+    "trainNumber": "12649",
+    "trainName": "Karnataka Express",
+    "origin": "NDLS",
+    "destination": "BLR",
+    "departureTime": "11:20",
+    "arrivalTime": "22:15",
+    "duration": "34h 55m",
+    "classes": ["2A", "3A", "SL"],
+    "availableSeats": {
+      "2A": 42,
+      "3A": 62,
+      "SL": 84
+    },
+    "fare": {
+      "2A": 4500,
+      "3A": 3100,
+      "SL": 1250
+    }
+  },
+  {
+    "Id": 5,
+    "trainNumber": "12723",
+    "trainName": "Telangana Express",
+    "origin": "NDLS",
+    "destination": "HYB",
+    "departureTime": "21:15",
+    "arrivalTime": "07:00",
+    "duration": "21h 45m",
+    "classes": ["2A", "3A", "SL"],
+    "availableSeats": {
+      "2A": 36,
+      "3A": 54,
+      "SL": 76
+    },
+    "fare": {
+      "2A": 3800,
+      "3A": 2650,
+      "SL": 1150
+    }
+  },
+  {
+    "Id": 6,
+    "trainNumber": "12137",
+    "trainName": "Punjab Mail",
+    "origin": "BCT",
+    "destination": "NDLS",
+    "departureTime": "20:05",
+    "arrivalTime": "10:50",
+    "duration": "14h 45m",
+    "classes": ["1A", "2A", "3A", "SL"],
+    "availableSeats": {
+      "1A": 16,
+      "2A": 48,
+      "3A": 68,
+      "SL": 88
+    },
+    "fare": {
+      "1A": 4200,
+      "2A": 2650,
+      "3A": 1750,
+      "SL": 650
+    }
+  },
+  {
+    "Id": 7,
+    "trainNumber": "22691",
+    "trainName": "Rajdhani Express",
+    "origin": "NDLS",
+    "destination": "BLR",
+    "departureTime": "20:20",
+    "arrivalTime": "05:55",
+    "duration": "33h 35m",
+    "classes": ["1A", "2A", "3A"],
+    "availableSeats": {
+      "1A": 20,
+      "2A": 44,
+      "3A": 64
+    },
+    "fare": {
+      "1A": 7200,
+      "2A": 4800,
+      "3A": 3400
+    }
+  },
+  {
+    "Id": 8,
+    "trainNumber": "12009",
+    "trainName": "Shatabdi Express",
+    "origin": "NDLS",
+    "destination": "AGC",
+    "departureTime": "06:00",
+    "arrivalTime": "08:00",
+    "duration": "2h 00m",
+    "classes": ["CC", "EC"],
+    "availableSeats": {
+      "CC": 48,
+      "EC": 24
+    },
+    "fare": {
+      "CC": 685,
+      "EC": 1285
+    }
+  },
+  {
+    "Id": 9,
+    "trainNumber": "12956",
+    "trainName": "Jaipur Superfast Express",
+    "origin": "BCT",
+    "destination": "JP",
+    "departureTime": "16:40",
+    "arrivalTime": "06:45",
+    "duration": "14h 05m",
+    "classes": ["1A", "2A", "3A", "SL"],
+    "availableSeats": {
+      "1A": 14,
+      "2A": 40,
+      "3A": 56,
+      "SL": 72
+    },
+    "fare": {
+      "1A": 4800,
+      "2A": 3000,
+      "3A": 2100,
+      "SL": 780
+    }
+  },
+  {
+    "Id": 10,
+    "trainNumber": "12004",
+    "trainName": "Lucknow Swarn Shatabdi",
+    "origin": "NDLS",
+    "destination": "LKO",
+    "departureTime": "15:50",
+    "arrivalTime": "21:25",
+    "duration": "5h 35m",
+    "classes": ["CC", "EC"],
+    "availableSeats": {
+      "CC": 52,
+      "EC": 28
+    },
+    "fare": {
+      "CC": 1240,
+      "EC": 2385
+    }
+  }
+]
