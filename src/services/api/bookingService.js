@@ -4,15 +4,55 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 let bookings = [...bookingsData];
 
+const { ApperClient } = window.ApperSDK || {};
+
 const bookingService = {
   async getAll() {
     await delay(400);
     return [...bookings];
   },
 
-  async getByPnr(pnr) {
+async getByPnr(pnr) {
     await delay(300);
     return bookings.find(booking => booking.pnr === pnr);
+  },
+
+  async downloadTicketPdf(booking) {
+    try {
+      if (!ApperClient) {
+        throw new Error('ApperClient not available');
+      }
+
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+
+      const result = await apperClient.functions.invoke(import.meta.env.VITE_GENERATE_TICKET_PDF, {
+        body: JSON.stringify(booking),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!result.success) {
+        console.info(`apper_info: Got an error in this function: ${import.meta.env.VITE_GENERATE_TICKET_PDF}. The response body is: ${JSON.stringify(result)}.`);
+        throw new Error(result.error || 'Failed to generate PDF');
+      }
+
+      // Create download link
+      const link = document.createElement('a');
+      link.href = result.pdfData;
+      link.download = result.filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      return result;
+    } catch (error) {
+      console.info(`apper_info: Got this error an this function: ${import.meta.env.VITE_GENERATE_TICKET_PDF}. The error is: ${error.message}`);
+      throw error;
+    }
   },
 
   async getUserBookings() {

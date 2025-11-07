@@ -16,6 +16,7 @@ const BookingConfirmation = () => {
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [downloadingPdf, setDownloadingPdf] = useState(false);
 
   useEffect(() => {
     if (pnr) {
@@ -41,6 +42,21 @@ const BookingConfirmation = () => {
       setError("Failed to load booking details. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDownloadTicket = async () => {
+    if (!booking) return;
+    
+    setDownloadingPdf(true);
+    try {
+      await bookingService.downloadTicketPdf(booking);
+      toast.success("Ticket downloaded successfully!");
+    } catch (err) {
+      console.error("Error downloading ticket:", err);
+      toast.error("Failed to download ticket. Please try again.");
+    } finally {
+      setDownloadingPdf(false);
     }
   };
 
@@ -207,16 +223,17 @@ const BookingConfirmation = () => {
         </div>
       </div>
 
-      {/* Action Buttons */}
+{/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button
           variant="primary"
           size="lg"
-          onClick={() => toast.success("Ticket download feature coming soon!")}
+          onClick={handleDownloadTicket}
+          disabled={downloadingPdf}
           className="flex-1 sm:flex-initial"
         >
-          <ApperIcon name="Download" className="w-5 h-5 mr-2" />
-          Download Ticket
+          <ApperIcon name={downloadingPdf ? "Loader2" : "Download"} className={`w-5 h-5 mr-2 ${downloadingPdf ? 'animate-spin' : ''}`} />
+          {downloadingPdf ? "Generating PDF..." : "Download Ticket"}
         </Button>
         
         <Link to="/my-bookings">

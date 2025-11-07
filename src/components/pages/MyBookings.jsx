@@ -102,8 +102,14 @@ const MyBookings = () => {
     navigate(`/booking-confirmation?pnr=${booking.pnr}`);
   };
 
-  const handleDownloadTicket = (booking) => {
-    toast.success("Ticket download feature coming soon!");
+const handleDownloadTicket = async (booking) => {
+    try {
+      await bookingService.downloadTicketPdf(booking);
+      toast.success("Ticket downloaded successfully!");
+    } catch (err) {
+      console.error("Error downloading ticket:", err);
+      toast.error("Failed to download ticket. Please try again.");
+    }
   };
 
   const getBookingStats = () => {
