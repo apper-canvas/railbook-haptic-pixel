@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SearchForm from "@/components/organisms/SearchForm";
+import toast from "react-hot-toast";
+import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
+import SearchForm from "@/components/organisms/SearchForm";
 
 const Home = () => {
   const [recentSearches] = useState([
@@ -121,7 +122,15 @@ const Home = () => {
           </div>
           <h3 className="text-lg font-semibold text-gray-900 mb-2">Customer Support</h3>
           <p className="text-gray-600 mb-4">Get help with your booking queries</p>
-          <Button variant="outline" size="sm" className="w-full">
+<Button 
+            variant="outline" 
+            size="sm" 
+            className="w-full"
+            onClick={() => {
+              window.open('mailto:support@railbook.com?subject=RailBook Customer Support - Booking Assistance', '_self');
+              toast.info('Opening email client for customer support contact');
+            }}
+          >
             Contact Us
           </Button>
         </div>
