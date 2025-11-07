@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
@@ -7,6 +7,17 @@ import Badge from "@/components/atoms/Badge";
 import SearchForm from "@/components/organisms/SearchForm";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleRouteClick = (route) => {
+    // Parse route string like "Delhi to Mumbai" into origin and destination
+    const routeParts = route.route.split(' to ');
+    if (routeParts.length === 2) {
+      const [origin, destination] = routeParts;
+      // Navigate to search results with pre-populated route data
+      navigate(`/search-results?from=${encodeURIComponent(origin.trim())}&to=${encodeURIComponent(destination.trim())}`);
+    }
+  };
   const [recentSearches] = useState([
     { origin: "NDLS", destination: "BCT", route: "Delhi → Mumbai" },
     { origin: "BCT", destination: "MAS", route: "Mumbai → Chennai" },
@@ -146,10 +157,11 @@ const Home = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {popularRoutes.map((route, index) => (
+{popularRoutes.map((route, index) => (
             <div 
               key={index}
               className="p-4 bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg border border-gray-100 hover:shadow-md transition-all duration-200 cursor-pointer group"
+              onClick={() => handleRouteClick(route)}
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
