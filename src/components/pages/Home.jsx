@@ -14,8 +14,13 @@ const handleRouteClick = (route) => {
     const routeParts = route.route.split(' → ');
     if (routeParts.length === 2) {
       const [origin, destination] = routeParts;
-      // Navigate to search results with pre-populated route data
-      navigate(`/search-results?from=${encodeURIComponent(origin.trim())}&to=${encodeURIComponent(destination.trim())}`);
+      // Get tomorrow's date as default journey date
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const journeyDate = tomorrow.toISOString().split('T')[0];
+      
+      // Navigate to search results with correct parameters that SearchResults expects
+      navigate(`/search-results?origin=${encodeURIComponent(origin.trim())}&destination=${encodeURIComponent(destination.trim())}&journeyDate=${journeyDate}&passengers=1`);
     }
   };
   const [recentSearches] = useState([
